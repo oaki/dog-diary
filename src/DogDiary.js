@@ -5,6 +5,10 @@ app.controller('MainCtrl', function($scope){
    $scope.message = 'palo';
 });
 
+app.controller('AddMessageCtrl', function($scope){
+    $scope.message = 'palo';
+});
+
 app.config(function ($routeProvider) {
 
     $routeProvider.when('/', {
@@ -16,7 +20,8 @@ app.config(function ($routeProvider) {
     //    controller: "CalendarCtrl"
     //})
     .when('/addMessage', {
-            template: '<h1>page 3</h1>'
+            templateUrl: 'partials/addMessage.html',
+            controller: "AddMessageCtrl"
         })
         .otherwise({
             template: '<h1>404</h1>'
