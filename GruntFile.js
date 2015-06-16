@@ -2,6 +2,14 @@ module.exports = function (grunt)
 {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+        copy: {
+
+            main:{
+                files:[
+                    {expand: true, cwd: 'bower_components/bootstrap/fonts/', src: ['**'], dest: 'src/fonts/'}
+                ]
+            }
+        },
 		concat: {
 			options: {
 				separator: "\n\n"
@@ -61,7 +69,7 @@ module.exports = function (grunt)
 			},
 			styles: {
 				files: ['src/resources/css/*.less'],
-				tasks: ['less']
+				tasks: ['less','concat:css']
 			}
 		}
 	});
@@ -78,7 +86,9 @@ module.exports = function (grunt)
 	grunt.registerTask('default', 'Default Task Alias', ['build']);
 
 	grunt.registerTask('build', 'Build the application', 
-		['less:dev',
-		'concat',
+		[
+            'copy',
+            'less:dev',
+		    'concat'
 		]);
 }
