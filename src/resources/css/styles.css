@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   padding: 0;
-  margin: 0; }
-
+  margin: 0;
+}
 .boxContainer {
   width: 100px;
   display: block;
@@ -11,6 +12,5 @@ html, body {
   font-size: 2em;
   text-align: center;
   font-weight: bold;
-  background-color: #000000; }
-
-/*# sourceMappingURL=styles.css.map */
+  background-color: #000000;
+}
