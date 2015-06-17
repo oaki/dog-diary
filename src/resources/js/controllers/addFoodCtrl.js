@@ -3,9 +3,11 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', function ($scope, da
         $scope.foods = {};
 
         $scope.insertFood = function () {
-            //Fake customer data
             var food = {
-                date: $scope.date
+                datetime: $scope.datetime,
+                name: $scope.name,
+                weight: $scope.weight,
+                dufalact: $scope.dufalact
             };
             dataFoodFactory.insert(food)
                 .success(function () {

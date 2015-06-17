@@ -9,7 +9,7 @@ app.config(function ($routeProvider) {
         //    templateUrl: "partials/calendar.html",
         //    controller: "CalendarCtrl"
         //})
-        .when('/addMessage', {
+        .when('/addFood', {
             templateUrl: 'partials/addFood.html',
             controller: "AddFoodCtrl"
         })
