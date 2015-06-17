@@ -13,6 +13,10 @@ app.config(function ($routeProvider) {
             templateUrl: 'partials/addFood.html',
             controller: "AddFoodCtrl"
         })
+        .when('/addPoop', {
+            templateUrl: 'partials/addPoop.html',
+            controller: "AddPoopCtrl"
+        })
         .otherwise({
             template: '<h1>404</h1>'
         })

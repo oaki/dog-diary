@@ -1,9 +1,10 @@
 /* use strict */
-app.controller('MainCtrl', ['$scope', 'dataFoodFactory', function ($scope, dataFoodFactory) {
+app.controller('MainCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
     $scope.foods = {};
 
     $scope.getFood = function () {
-        dataFoodFactory.getAll()
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/food';
+        dataFactory.getAll()
             .success(function (data) {
                 console.log(data);
                 $scope.foods = data.foods;

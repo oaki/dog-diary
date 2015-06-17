@@ -10,6 +10,8 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', '$location', functio
                 weight: $scope.weight,
                 dufalact: $scope.dufalact
             };
+
+            dataFoodFactory.urlBase = 'http://dogdiary.bincik.sk/api/food';
             dataFoodFactory.insert(food)
                 .success(function () {
                     $location.path('/');
@@ -22,11 +24,34 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', '$location', functio
 
 
 /* use strict */
-app.controller('MainCtrl', ['$scope', 'dataFoodFactory', function ($scope, dataFoodFactory) {
+app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
+        $scope.insertPoop = function () {
+            var Poop = {
+                datetime: $scope.datetime,
+                consistency: $scope.consistency,
+                size: $scope.size
+            };
+            
+            dataFoodFactory.urlBase = 'http://dogdiary.bincik.sk/api/poop';
+
+            dataFactory.insert(Poop)
+                .success(function () {
+                    $location.path('/');
+                }).
+                error(function (error) {
+                    $scope.status = 'Unable to insert Poop: ' + error.message;
+                });
+        };
+    }]);
+
+
+/* use strict */
+app.controller('MainCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
     $scope.foods = {};
 
     $scope.getFood = function () {
-        dataFoodFactory.getAll()
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/food';
+        dataFactory.getAll()
             .success(function (data) {
                 console.log(data);
                 $scope.foods = data.foods;
@@ -41,28 +66,30 @@ app.controller('MainCtrl', ['$scope', 'dataFoodFactory', function ($scope, dataF
 }]);
 
 /* use strict */
-app.factory('dataFoodFactory', ['$http', function ($http) {
-        var urlBase = 'http://dogdiary.bincik.sk/api/food';
-        var dataFactory = {};
+app.factory('dataFactory', ['$http', function ($http) {
+
+        var dataFactory = {
+            'urlBase':''
+        };
 
         dataFactory.getAll = function () {
-            return $http.get(urlBase);
+            return $http.get(this.urlBase);
         };
 
         dataFactory.get = function (id) {
-            return $http.get(urlBase + '/' + id);
+            return $http.get(this.urlBase + '/' + id);
         };
 
         dataFactory.insert = function (food) {
-            return $http.post(urlBase, JSON.stringify(food));
+            return $http.post(this.urlBase, JSON.stringify(food));
         };
 
         dataFactory.update = function (cust) {
-            return $http.put(urlBase + '/' + cust.ID, cust)
+            return $http.put(this.urlBase + '/' + cust.ID, cust)
         };
 
         dataFactory.delete = function (id) {
-            return $http.delete(urlBase + '/' + id);
+            return $http.delete(this.urlBase + '/' + id);
         };
 
         return dataFactory;
@@ -83,6 +110,10 @@ app.config(function ($routeProvider) {
         .when('/addFood', {
             templateUrl: 'partials/addFood.html',
             controller: "AddFoodCtrl"
+        })
+        .when('/addPoop', {
+            templateUrl: 'partials/addPoop.html',
+            controller: "AddPoopCtrl"
         })
         .otherwise({
             template: '<h1>404</h1>'
