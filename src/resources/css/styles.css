@@ -4,8 +4,8 @@ body {
 }
 .c-main-button .main-button {
   float: left;
-  width: 50%;
-  padding: 10px;
+  width: 33.333%;
+  padding: 5px;
   text-align: center;
   color: white;
   background-color: #333;
