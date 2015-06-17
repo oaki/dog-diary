@@ -3,3 +3,5 @@ node_modules/
 bin/
 .idea
 src/server/vendor
+src/server/temp
+src/server/log

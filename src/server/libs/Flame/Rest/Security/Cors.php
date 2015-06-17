@@ -52,7 +52,7 @@ class Cors extends Object implements ICors
 //		$this->httpResponse->addHeader(self::HEADER_HEADERS, $this->getHeaders());
 //		$this->httpResponse->addHeader(self::HEADER_METHODS, $this->getMethods());
 
-        $this->httpResponse->addHeader(self::HEADER_ORIGIN, 'http://localhost');
+        $this->httpResponse->addHeader(self::HEADER_ORIGIN, '*');
 		$this->httpResponse->addHeader(self::HEADER_HEADERS, 'Content-Type');
 		$this->httpResponse->addHeader(self::HEADER_METHODS, 'GET, POST, PUT, DELETE');
 	}

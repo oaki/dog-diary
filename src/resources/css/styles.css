@@ -2,3 +2,19 @@ body {
   padding-top: 50px;
   border: 1px solid green;
 }
+.c-main-button .main-button {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background-color: #333;
+}
+.c-main-button .main-button:hover {
+  background-color: #242933;
+}
+.navbar-brand {
+  display: block;
+  float: none;
+  text-align: center;
+}
