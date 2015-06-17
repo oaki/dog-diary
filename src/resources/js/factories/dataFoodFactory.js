@@ -1,6 +1,6 @@
 /* use strict */
 app.factory('dataFoodFactory', ['$http', function ($http) {
-        var urlBase = '/api/foods';
+        var urlBase = 'http://dogdiary.bincik.sk/api/food';
         var dataFactory = {};
 
         dataFactory.getAll = function () {
@@ -12,7 +12,7 @@ app.factory('dataFoodFactory', ['$http', function ($http) {
         };
 
         dataFactory.insert = function (food) {
-            return $http.post(urlBase, food);
+            return $http.post(urlBase, JSON.stringify(food));
         };
 
         dataFactory.update = function (cust) {

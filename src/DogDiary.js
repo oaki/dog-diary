@@ -2,9 +2,7 @@
 var app = angular.module('DogDiaryApp', ['ngRoute']);
 
 /* use strict */
-app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', function ($scope, dataFoodFactory) {
-        $scope.foods = {};
-
+app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', '$location', function ($scope, dataFoodFactory, $location) {
         $scope.insertFood = function () {
             var food = {
                 datetime: $scope.datetime,
@@ -14,24 +12,37 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', function ($scope, da
             };
             dataFoodFactory.insert(food)
                 .success(function () {
-                    $scope.status = 'Inserted Customer! Refreshing customer list.';
-                    $scope.foods.push(food);
+                    $location.path('/');
                 }).
                 error(function (error) {
-                    $scope.status = 'Unable to insert customer: ' + error.message;
+                    $scope.status = 'Unable to insert food: ' + error.message;
                 });
         };
     }]);
 
 
 /* use strict */
-app.controller('MainCtrl', ['$scope', function ($scope) {
+app.controller('MainCtrl', ['$scope', 'dataFoodFactory', function ($scope, dataFoodFactory) {
+    $scope.foods = {};
 
-    }]);
+    $scope.getFood = function () {
+        dataFoodFactory.getAll()
+            .success(function (data) {
+                console.log(data);
+                $scope.foods = data.foods;
+            }).
+            error(function (error) {
+                $scope.status = 'Unable to get foods: ' + error.message;
+            });
+    };
+
+    $scope.getFood();
+
+}]);
 
 /* use strict */
 app.factory('dataFoodFactory', ['$http', function ($http) {
-        var urlBase = '/api/foods';
+        var urlBase = 'http://dogdiary.bincik.sk/api/food';
         var dataFactory = {};
 
         dataFactory.getAll = function () {
@@ -43,7 +54,7 @@ app.factory('dataFoodFactory', ['$http', function ($http) {
         };
 
         dataFactory.insert = function (food) {
-            return $http.post(urlBase, food);
+            return $http.post(urlBase, JSON.stringify(food));
         };
 
         dataFactory.update = function (cust) {

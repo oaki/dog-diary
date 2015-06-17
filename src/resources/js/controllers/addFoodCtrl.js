@@ -1,7 +1,5 @@
 /* use strict */
-app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', function ($scope, dataFoodFactory) {
-        $scope.foods = {};
-
+app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', '$location', function ($scope, dataFoodFactory, $location) {
         $scope.insertFood = function () {
             var food = {
                 datetime: $scope.datetime,
@@ -11,11 +9,10 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', function ($scope, da
             };
             dataFoodFactory.insert(food)
                 .success(function () {
-                    $scope.status = 'Inserted Customer! Refreshing customer list.';
-                    $scope.foods.push(food);
+                    $location.path('/');
                 }).
                 error(function (error) {
-                    $scope.status = 'Unable to insert customer: ' + error.message;
+                    $scope.status = 'Unable to insert food: ' + error.message;
                 });
         };
     }]);
