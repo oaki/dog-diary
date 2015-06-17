@@ -24,12 +24,16 @@ module.exports = function (grunt)
 					'bower_components/jquery/dist/jquery.js',
 					'bower_components/bootstrap/dist/js/bootstrap.js',
 					'bower_components/angularjs/angular.min.js',
-					'bower_components/angular-route/angular-route.min.js'
+					'bower_components/angular-route/angular-route.min.js',
+                    'bower_components/Chart.js/Chart.js',
+					'bower_components/angular-chart.js/dist/angular-chart.min.js'
 				],
 				dest: 'src/<%= pkg.name %>-deps.js'
 			},
 			css: {
-				src: ['bower_components/bootstrap/dist/css/bootstrap.min.css',
+				src: [
+                    'bower_components/bootstrap/dist/css/bootstrap.min.css',
+                    'bower_components/angular-chart.js/dist/dist/angular-chart.css',
 						'src/resources/css/styles.css'
 				],
 				dest: 'src/<%= pkg.name %>.css'

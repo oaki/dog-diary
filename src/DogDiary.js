@@ -1,5 +1,15 @@
 /* use strict */
-var app = angular.module('DogDiaryApp', ['ngRoute']);
+var app = angular.module('DogDiaryApp', ['ngRoute','chart.js']);
+
+app.controller("ChartCtrl", function ($scope) {
+    $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    $scope.series = ['Series A', 'Series B'];
+
+    $scope.data = [
+        [65, 59, 80, 81, 56, 55, 40],
+        [28, 48, 40, 19, 86, 27, 90]
+    ];
+});
 
 /* use strict */
 app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', '$location', function ($scope, dataFoodFactory, $location) {
@@ -114,6 +124,10 @@ app.config(function ($routeProvider) {
         .when('/addPoop', {
             templateUrl: 'partials/addPoop.html',
             controller: "AddPoopCtrl"
+        })
+        .when('/chart', {
+            templateUrl: 'partials/chart.html',
+            controller: "ChartCtrl"
         })
         .otherwise({
             template: '<h1>404</h1>'
