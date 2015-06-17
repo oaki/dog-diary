@@ -8,20 +8,20 @@ use Nette,
 
 
 /**
- * Food presenter.
+ * Poop presenter.
  */
-class FoodPresenter extends RestPresenter
+class PoopPresenter extends RestPresenter
 {
 
     public $model;
 
     public function startup(){
         parent::startup();
-        $this->model = new Model\FoodModel($this->context->getService('dibi'));
+        $this->model = new Model\PoopModel($this->context->getService('dibi'));
     }
 
     # for POST method
-    # request: /api/food
+    # request: /api/poop
     public function actionCreate()
     {
 
@@ -35,31 +35,31 @@ class FoodPresenter extends RestPresenter
     }
 
     # for GET method
-    # request: example.com/api/food/<id>
+    # request: example.com/api/poop/<id>
     public function actionRead($id = null)
     {
         try {
 
-            $this->resource->food = $this->model->fetch($id);
+            $this->resource->poop = $this->model->fetch($id);
         } catch (\Exception $ex) {
             $this->sendErrorResource($ex);
         }
     }
 
     # for GET method without @id
-    # request: example.com/api/food
+    # request: example.com/api/poop
     public function actionReadAll()
     {
 
         try {
-            $this->resource->foods = $this->model->fetchAll();
+            $this->resource->poops = $this->model->fetchAll();
         } catch (\Exception $ex) {
             $this->sendErrorResource($ex);
         }
     }
 
     # for GET method
-    # request: example.com/api/food/count
+    # request: example.com/api/poop/count
     public function actionReadCount()
     {
         try {
