@@ -1,0 +1,18 @@
+parameters:
+
+
+    database:
+        driver: mysql
+        socket: /tmp/mariadb55.sock
+        database: dogdiary
+        username: dogdiary
+        password: dogdiary123
+        charset: utf8
+        profiler: true
+
+rest:
+    systemSalt: deepSalt34
+    authenticators: []
+    cors: []
+    ips: []
+    referers: []
