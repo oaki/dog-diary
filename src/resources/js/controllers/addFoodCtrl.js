@@ -1,7 +1,7 @@
 /* use strict */
 app.controller('AddFoodCtrl', ['$scope', 'dataFoodFactory', function ($scope, dataFoodFactory) {
         $scope.foods = {};
-
+/**/
         $scope.insertFood = function () {
             //Fake customer data
             var food = {
