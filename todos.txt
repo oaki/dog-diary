@@ -4,8 +4,14 @@
 
 - tests
 
-- poloha
+- geog
 
 - upload foto
 
 - Slider - range - nevidim hodnoty
+
+- validation inputs
+
+- directive
+
+-
