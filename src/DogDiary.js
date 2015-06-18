@@ -22,7 +22,7 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($
             dufalact: $scope.dufalact
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/food';
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/food';
         dataFactory.insert(food)
             .success(function () {
                 $location.path('/');
@@ -44,7 +44,7 @@ app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($
             size: $scope.size
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/poop';
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/poop';
 
         dataFactory.insert(Poop)
             .success(function () {
@@ -62,7 +62,7 @@ app.controller('MainCtrl', ['$scope', 'dataFactory', function ($scope, dataFacto
     $scope.foods = {};
 
     $scope.getFood = function () {
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/food';
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/food';
         dataFactory.getAll()
             .success(function (data) {
                 console.log(data);

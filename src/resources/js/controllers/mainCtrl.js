@@ -3,7 +3,7 @@ app.controller('MainCtrl', ['$scope', 'dataFactory', function ($scope, dataFacto
     $scope.foods = {};
 
     $scope.getFood = function () {
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/food';
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/food';
         dataFactory.getAll()
             .success(function (data) {
                 console.log(data);

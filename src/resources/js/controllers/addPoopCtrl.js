@@ -8,7 +8,7 @@ app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($
             size: $scope.size
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/poop';
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/poop';
 
         dataFactory.insert(Poop)
             .success(function () {

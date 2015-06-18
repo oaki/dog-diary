@@ -9,7 +9,7 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($
             dufalact: $scope.dufalact
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/api/food';
+        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/food';
         dataFactory.insert(food)
             .success(function () {
                 $location.path('/');

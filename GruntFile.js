@@ -75,7 +75,16 @@ module.exports = function (grunt)
 				files: ['src/resources/css/*.less'],
 				tasks: ['less','concat:css']
 			}
-		}
+		},
+
+        jasmine : {
+            // Your project's source files
+            src : 'src/**/*.js',
+            // Your Jasmine spec files
+            specs : 'specs/**/*spec.js',
+            // Your spec helper files
+            helpers : 'specs/helpers/*.js'
+        }
 	});
 
 	//npm tasks
