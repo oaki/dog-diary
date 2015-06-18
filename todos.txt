@@ -7,3 +7,5 @@
 - poloha
 
 - upload foto
+
+- Slider - range - nevidim hodnoty
