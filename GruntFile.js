@@ -88,6 +88,13 @@ module.exports = function (grunt)
             specs : 'specs/**/*spec.js',
             // Your spec helper files
             helpers : 'specs/helpers/*.js'
+        },
+        uglify: {
+            my_target: {
+                files: {
+                    'src/DogDiary-deps.min.js': ['src/DogDiary-deps.js']
+                }
+            }
         }
 	});
 
