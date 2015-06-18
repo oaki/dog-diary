@@ -6,7 +6,6 @@
 
 body {
   padding-top: 50px;
-  border: 1px solid green;
 }
 .c-main-button .main-button {
   float: left;
@@ -23,4 +22,7 @@ body {
   display: block;
   float: none;
   text-align: center;
+}
+.angular-google-map-container {
+  height: 300px;
 }

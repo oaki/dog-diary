@@ -26,7 +26,11 @@ module.exports = function (grunt)
 					'bower_components/angularjs/angular.min.js',
 					'bower_components/angular-route/angular-route.min.js',
                     'bower_components/Chart.js/Chart.js',
-					'bower_components/angular-chart.js/dist/angular-chart.min.js'
+					'bower_components/angular-chart.js/dist/angular-chart.min.js',
+
+					'bower_components/lodash/lodash.js',
+                    'bower_components/angular-google-maps/dist/angular-google-maps.js',
+                    'bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js'
 				],
 				dest: 'src/<%= pkg.name %>-deps.js'
 			},

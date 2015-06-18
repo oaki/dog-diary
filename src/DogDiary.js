@@ -1,5 +1,21 @@
 /* use strict */
-var app = angular.module('DogDiaryApp', ['ngRoute','chart.js']);
+var app = angular.module('DogDiaryApp',
+    [
+        'ngRoute',
+        'chart.js',
+        'uiGmapgoogle-maps',
+        'geolocation'
+    ]);
+
+/* use strict */
+app.config(function (uiGmapGoogleMapApiProvider) {
+
+    uiGmapGoogleMapApiProvider.configure({
+        //    key: 'your api key',
+        v: '3.17',
+        libraries: 'weather,geometry,visualization'
+    });
+});
 
 app.controller("ChartCtrl", function ($scope) {
     $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
@@ -9,6 +25,46 @@ app.controller("ChartCtrl", function ($scope) {
         [65, 59, 80, 81, 56, 55, 40],
         [28, 48, 40, 19, 86, 27, 90]
     ];
+});
+
+app.controller("GeoPositionCtrl", function ($scope, uiGmapGoogleMapApi, geolocation, $log) {
+
+    geolocation.getLocation().then(function(data){
+        uiGmapGoogleMapApi.then(function (maps) {
+            $log.debug(maps);
+            $scope.map = {
+                center: {
+                    latitude: data.coords.latitude, longitude: data.coords.longitude
+                }, zoom: 18};
+
+            $scope.marker = {
+                id: 0,
+                coords: {
+                    latitude: data.coords.latitude,
+                    longitude: data.coords.longitude
+                },
+                options: { draggable: true },
+                events: {
+                    dragend: function (marker, eventName, args) {
+                        $log.log('marker dragend');
+                        var lat = marker.getPosition().lat();
+                        var lon = marker.getPosition().lng();
+                        $log.log(lat);
+                        $log.log(lon);
+
+                        $scope.marker.options = {
+                            draggable: true,
+                            labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+                            labelAnchor: "100 0",
+                            labelClass: "marker-labels"
+                        };
+                    }
+                }
+            };
+        });
+    });
+
+
 });
 
 /* use strict */
