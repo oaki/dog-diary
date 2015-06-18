@@ -32,7 +32,8 @@
     "modernizr": "~2.8.3",
     "jquery": "~2.1.1",
     "Chart.js": "~1.0.2",
-    "angular-chart.js": "~0.7.2"
+    "angular-chart.js": "~0.7.2",
+    "jasmine": "~2.3.4"
 
   }
 }
