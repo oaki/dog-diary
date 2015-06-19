@@ -9,7 +9,6 @@ bower install
 
 ## Backend  - based on Nette framework
 ## Frontend - based on Angular.js
----------------------------------
 
 #Tests
 For testing we are using Jasmine.
