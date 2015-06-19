@@ -64,6 +64,8 @@ app.controller("GeoPositionCtrl", function ($scope, uiGmapGoogleMapApi, geolocat
 /* use strict */
 app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
     $scope.datetime = new Date();
+    $scope.weight = 40;
+    $scope.dufalact = 5;
     $scope.insertFood = function () {
         var food = {
             datetime: $scope.datetime,
@@ -87,6 +89,9 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($
 /* use strict */
 app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
     $scope.datetime = new Date();
+    $scope.consistency = 5;
+    $scope.size = 5;
+
     $scope.insertPoop = function () {
         var Poop = {
             datetime: $scope.datetime,
