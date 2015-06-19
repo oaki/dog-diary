@@ -7,8 +7,8 @@ Ever imagine what it would be like if your pets had diaries? What would your fav
 npm install
 bower install
 
-Backend  - based on Nette framework
-Frontend - based on Angular.js
+## Backend  - based on Nette framework
+## Frontend - based on Angular.js
 ---------------------------------
 
 #Tests
