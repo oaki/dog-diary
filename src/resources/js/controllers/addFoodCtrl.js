@@ -1,6 +1,8 @@
 /* use strict */
 app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
     $scope.datetime = new Date();
+    $scope.weight = 40;
+    $scope.dufalact = 5;
     $scope.insertFood = function () {
         var food = {
             datetime: $scope.datetime,

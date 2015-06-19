@@ -1,6 +1,9 @@
 /* use strict */
 app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
     $scope.datetime = new Date();
+    $scope.consistency = 5;
+    $scope.size = 5;
+
     $scope.insertPoop = function () {
         var Poop = {
             datetime: $scope.datetime,
