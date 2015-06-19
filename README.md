@@ -8,7 +8,7 @@ npm install
 bower install
 
 ## Backend
-Based on Nette framework. Backend contains mainly Rest methods to get data.
+Based on Nette framework. Backend contains mainly REST methods to get data.
 
 ## Frontend 
 Based on Angular.js.
