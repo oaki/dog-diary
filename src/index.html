@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <script src="DogDiary-deps.js"></script>
+    <script src="DogDiary-deps.min.js"></script>
     <script src="DogDiary.js"></script>
 
     <link rel="stylesheet" href="DogDiary.css">
@@ -28,7 +28,15 @@
 
 <div class="container">
     <div data-ng-view></div>
+</div><!-- /.container -->
 
+<div class="container">
+    <div ng-controller="GeoPositionCtrl">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+            <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+    </div>
 </div><!-- /.container -->
 </body>
 </html>
