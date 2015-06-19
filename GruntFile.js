@@ -18,7 +18,7 @@ module.exports = function (grunt)
 				src: ['src/resources/js/**/*.js'],
 				dest: 'src/<%= pkg.name %>.js'
 			},
-			deps: {
+			/*deps: {
 				src: [
 					'bower_components/modernizr/modernizr.js',
 					'bower_components/jquery/dist/jquery.js',
@@ -33,7 +33,7 @@ module.exports = function (grunt)
                     'bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js'
 				],
 				dest: 'src/<%= pkg.name %>-deps.js'
-			},
+			},*/
 			css: {
 				src: [
                     'bower_components/bootstrap/dist/css/bootstrap.min.css',
