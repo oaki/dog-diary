@@ -116,14 +116,14 @@ app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($
 app.controller('MainCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
     var ctrl = this;
 
-    $scope.foods = {};
-
     $scope.labels = [];
     $scope.series = [
-        'Series A',
-        'Series B'
+        'Food weight',
+        'Dufalact',
+        'Poop'
     ];
     $scope.data = [
+        [],
         [],
         []
     ];
@@ -145,41 +145,77 @@ app.controller('MainCtrl', ['$scope', 'dataFactory', function ($scope, dataFacto
 
     ctrl.generateDayRange(10);
 
-    ctrl.processFoodData = function (data) {
-        //set date to usable format
+    ctrl.setDataWithDate = function (data) {
         angular.forEach(data, function(value) {
             var date = value.datetime.date;
             if(date !== undefined){
                 value.datetime.date = date.split(" ")[0];
             }
         });
+    };
 
-        //map date with values of weight and dufalact
-        var dataMappingFood = {};
+    ctrl.getMapValuesToDate = function (data, attributes) {
+        var dataMapping = {};
 
         angular.forEach(data, function(value) {
             var date = value.datetime.date;
-            if(dataMappingFood[date] === undefined){
-                dataMappingFood[date] = {
-                    "weight": value.weight,
-                    "dufalact": value.dufalact
-                }
+            if(dataMapping[date] === undefined){
+                dataMapping[date] = {};
+                angular.forEach(attributes, function(attribute){
+                    dataMapping[date][attribute] = value[attribute];
+                });
             } else {
-                dataMappingFood[date]["weight"] += value.weight;
-                dataMappingFood[date]["dufalact"] += value.dufalact;
+                angular.forEach(attributes, function(attribute){
+                    dataMapping[date][attribute] += value[attribute];
+                });
             }
         });
 
-        //set values to chart
+        return dataMapping;
+    };
+
+    ctrl.setValuesToChart = function (dataMapping, attributes) {
         for(var i = 0; i < $scope.labels.length; i++){
-            if(dataMappingFood[$scope.labels[i]] === undefined){
-                $scope.data[0].push(0);
-                $scope.data[1].push(0);
+            if(dataMapping[$scope.labels[i]] === undefined){
+                angular.forEach(attributes, function(attribute, key){
+                    $scope.data[key].push(0);
+                });
             } else {
-                $scope.data[0].push(dataMappingFood[$scope.labels[i]]["weight"]);
-                $scope.data[1].push(dataMappingFood[$scope.labels[i]]["dufalact"]);
+                angular.forEach(attributes, function(attribute, key){
+                    $scope.data[key].push(dataMapping[$scope.labels[i]][attribute]);
+                });
             }
         }
+    };
+
+    ctrl.processData = function (data, attributes) {
+        //set date to usable format
+        ctrl.setDataWithDate(data);
+
+        //map values to date
+        var dataMapping = ctrl.getMapValuesToDate(data, attributes);
+
+        //set values to chart
+        ctrl.setValuesToChart(dataMapping, attributes);
+    };
+
+    ctrl.processFoodData = function (data) {
+        //define attributes for chart
+        var attributes = {
+            0 : "weight",
+            1 : "dufalact"
+        };
+
+        ctrl.processData(data, attributes);
+    };
+
+    ctrl.processPoopData = function (data) {
+        //define attributes for chart
+        var attributes = {
+            2 : "size"
+        };
+
+        ctrl.processData(data, attributes);
     };
 
     ctrl.getFood = function () {
@@ -197,7 +233,7 @@ app.controller('MainCtrl', ['$scope', 'dataFactory', function ($scope, dataFacto
         dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/poop';
         dataFactory.getAll()
             .success(function (data) {
-                $scope.poops = data.poops;
+                ctrl.processPoopData(data.poops);
             }).
             error(function (error) {
                 $scope.status = 'Unable to get poops: ' + error.message;
