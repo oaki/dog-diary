@@ -4,7 +4,7 @@
 Ever imagine what it would be like if your pets had diaries? What would your favorite animal friend write about their day, about their life, about you?
 ### Description
 You can add information about food and poop of your animal, take photo and also record you gps location.
-You can have all important information saved and see them vizualizated in chart.
+You can have all important information saved and see them vizualizated in the chart.
 
 ## Instalation process
  
