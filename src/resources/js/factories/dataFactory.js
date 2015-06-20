@@ -2,7 +2,7 @@
 app.factory('dataFactory', ['$http', function ($http) {
 
         var dataFactory = {
-            'urlBase':''
+            'urlBase':'http://dogdiary.bincik.sk/server/api/'
         };
 
         dataFactory.getAll = function () {
