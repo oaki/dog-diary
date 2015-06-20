@@ -2,12 +2,8 @@
 
 - tests - monika
 
-- geog
-
-- upload foto
-
 - validation inputs
 
 - directive
 
--
+- add datetime picker
