@@ -28972,7 +28972,7 @@ q.directive("ngView",v);q.directive("ngView",A);v.$inject=["$route","$anchorScro
 }.call(this));
 
 
-/*! angular-google-maps 2.1.4 2015-06-14
+/*! angular-google-maps 2.1.5 2015-06-18
  *  AngularJS directives for Google Maps
  *  git: https://github.com/angular-ui/angular-google-maps.git
  */
