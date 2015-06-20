@@ -30,7 +30,8 @@ module.exports = function (grunt)
 
 					'bower_components/lodash/lodash.js',
                     'bower_components/angular-google-maps/dist/angular-google-maps.js',
-                    'bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js'
+                    'bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js',
+                    'bower_components/angular-loading-bar/build/loading-bar.js'
 				],
 				dest: 'src/<%= pkg.name %>-deps.js'
 			},
@@ -38,6 +39,7 @@ module.exports = function (grunt)
 				src: [
                     'bower_components/bootstrap/dist/css/bootstrap.min.css',
                     'bower_components/angular-chart.js/dist/dist/angular-chart.css',
+                    'bower_components/angular-loading-bar/build/loading-bar.css',
 						'src/resources/css/styles.css'
 				],
 				dest: 'src/<%= pkg.name %>.css'
