@@ -16,6 +16,7 @@ class BaseModel
     function insert($values)
     {
         $this->connection->insert($this->table, $values)->execute();
+        return $this->connection->insertId();
     }
 
     function delete($id)

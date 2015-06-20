@@ -15,5 +15,21 @@
         <input id="size" ng-model="size" type="range" min="1" max="10" class="bar" class="form-control">
     </div>
 
+    <input type="hidden" ng-model="latitude"/>
+    <input type="hidden" ng-model="longitude"/>
+    <input type="hidden" ng-model="fileId"/>
+
+    <div class="form-group">
+        <a class="btn btn-default" ngf-select ng-model="files">Upload image</a>
+    </div>
+
     <button type="submit" ng-click="insertPoop()" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
 </form>
+
+<img style="max-height: 200px" ngf-src="files[0]" ngf-default-src="images/empty.jpg" ngf-accept="'image/*'">
+
+<div ng-controller="GeoPositionCtrl">
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+        <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id"></ui-gmap-marker>
+    </ui-gmap-google-map>
+</div>

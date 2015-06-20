@@ -1,5 +1,7 @@
 parameters:
-
+    fileStorage:
+        upload_dir: %wwwDir%/upload
+        temp_dir: %wwwDir%/upload/temp
 
     database:
         driver: mysql

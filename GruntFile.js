@@ -31,7 +31,8 @@ module.exports = function (grunt)
 					'bower_components/lodash/lodash.js',
                     'bower_components/angular-google-maps/dist/angular-google-maps.js',
                     'bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js',
-                    'bower_components/angular-loading-bar/build/loading-bar.js'
+                    'bower_components/angular-loading-bar/build/loading-bar.js',
+                    'bower_components/ng-file-upload/ng-file-upload-all.js',
 				],
 				dest: 'src/<%= pkg.name %>-deps.js'
 			},

@@ -23,6 +23,8 @@ services:
 	router: App\RouterFactory::createRouter
 	food:
 	    factory: App\Model\FoodModel
+	file:
+	    factory: App\Model\FileModel
 	dibi:
 		factory: DibiConnection
 		arguments: [%database%]

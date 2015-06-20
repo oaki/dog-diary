@@ -5,5 +5,6 @@ var app = angular.module('DogDiaryApp',
         'chart.js',
         'uiGmapgoogle-maps',
         'geolocation',
-        'angular-loading-bar'
+        'angular-loading-bar',
+        'ngFileUpload'
     ]);

@@ -2,6 +2,9 @@ app.controller("GeoPositionCtrl", function ($scope, uiGmapGoogleMapApi, geolocat
 
     geolocation.getLocation().then(function(data){
         uiGmapGoogleMapApi.then(function (maps) {
+
+            $scope.$parent.latitude = data.coords.latitude;
+            $scope.$parent.longitude = data.coords.longitude;
             $log.debug(maps);
             $scope.map = {
                 center: {
@@ -22,7 +25,8 @@ app.controller("GeoPositionCtrl", function ($scope, uiGmapGoogleMapApi, geolocat
                         var lon = marker.getPosition().lng();
                         $log.log(lat);
                         $log.log(lon);
-
+                        $scope.$parent.latitude = $scope.marker.coords.latitude;
+                        $scope.$parent.longitude = $scope.marker.coords.longitude;
                         $scope.marker.options = {
                             draggable: true,
                             labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,

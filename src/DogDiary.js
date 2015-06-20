@@ -5,7 +5,8 @@ var app = angular.module('DogDiaryApp',
         'chart.js',
         'uiGmapgoogle-maps',
         'geolocation',
-        'angular-loading-bar'
+        'angular-loading-bar',
+        'ngFileUpload'
     ]);
 
 /* use strict */
@@ -26,6 +27,9 @@ app.controller("GeoPositionCtrl", function ($scope, uiGmapGoogleMapApi, geolocat
 
     geolocation.getLocation().then(function(data){
         uiGmapGoogleMapApi.then(function (maps) {
+
+            $scope.$parent.latitude = data.coords.latitude;
+            $scope.$parent.longitude = data.coords.longitude;
             $log.debug(maps);
             $scope.map = {
                 center: {
@@ -46,7 +50,8 @@ app.controller("GeoPositionCtrl", function ($scope, uiGmapGoogleMapApi, geolocat
                         var lon = marker.getPosition().lng();
                         $log.log(lat);
                         $log.log(lon);
-
+                        $scope.$parent.latitude = $scope.marker.coords.latitude;
+                        $scope.$parent.longitude = $scope.marker.coords.longitude;
                         $scope.marker.options = {
                             draggable: true,
                             labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
@@ -88,16 +93,22 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($
 
 
 /* use strict */
-app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
+app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', 'Upload', function ($scope, dataFactory, $location, Upload) {
     $scope.datetime = new Date();
     $scope.consistency = 5;
     $scope.size = 5;
+    $scope.latitude = 0;
+    $scope.longitude = 0;
+    $scope.fileId = 0;
 
     $scope.insertPoop = function () {
         var Poop = {
             datetime: $scope.datetime,
             consistency: $scope.consistency,
-            size: $scope.size
+            size: $scope.size,
+            latitude: $scope.latitude,
+            longitude: $scope.longitude,
+            fileId: $scope.fileId
         };
 
         dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/poop';
@@ -109,6 +120,31 @@ app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', function ($
             error(function (error) {
                 $scope.status = 'Unable to insert Poop: ' + error.message;
             });
+    };
+
+
+    $scope.$watch('files', function () {
+        console.log($scope);
+        $scope.upload($scope.files);
+    });
+
+    $scope.upload = function (files) {
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                Upload.upload({
+                    url: 'http://dogdiary.bincik.sk/server/upload-file/',
+                    file: file
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                }).success(function (data, status, headers, config) {
+                    console.log(data);
+                    $scope.fileId = data.id;
+                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                });
+            }
+        }
     };
 }]);
 

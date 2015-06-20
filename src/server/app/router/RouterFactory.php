@@ -23,7 +23,7 @@ class RouterFactory
         $router[] = new \Flame\Rest\Application\Routers\RestRoute('Api');
 
 
-//        $router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
+        $router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 		return $router;
 	}
 
