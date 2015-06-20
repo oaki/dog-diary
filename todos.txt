@@ -1,14 +1,10 @@
 - main Ctrl - prehodit chart - kolko jedla, kolko dufalaku a kolko poop -> in progress
 
-- loading - monika
-
 - tests - monika
 
 - geog
 
 - upload foto
-
-- Slider - range - nevidim hodnoty - done
 
 - validation inputs
 
