@@ -6,5 +6,6 @@ var app = angular.module('DogDiaryApp',
         'uiGmapgoogle-maps',
         'geolocation',
         'angular-loading-bar',
-        'ngFileUpload'
+        'ngFileUpload',
+        'ui.bootstrap.datetimepicker'
     ]);

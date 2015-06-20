@@ -33,6 +33,10 @@ module.exports = function (grunt)
                     'bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js',
                     'bower_components/angular-loading-bar/build/loading-bar.js',
                     'bower_components/ng-file-upload/ng-file-upload-all.js',
+
+
+                    'bower_components/moment/moment.js',
+                    'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
 				],
 				dest: 'src/<%= pkg.name %>-deps.js'
 			},
@@ -41,6 +45,11 @@ module.exports = function (grunt)
                     'bower_components/bootstrap/dist/css/bootstrap.min.css',
                     'bower_components/angular-chart.js/dist/dist/angular-chart.css',
                     'bower_components/angular-loading-bar/build/loading-bar.css',
+
+
+                    'bower_components/angular-bootstrap-datetimepicker/src/css/datetimepicker.css',
+
+
 						'src/resources/css/styles.css'
 				],
 				dest: 'src/<%= pkg.name %>.css'
