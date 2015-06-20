@@ -5,5 +5,3 @@
 - validation inputs
 
 - directive
-
-- add datetime picker
