@@ -12,7 +12,7 @@
     "karma-phantomjs-launcher": "*"
   },
   "devDependencies": {
-    "grunt-coib-copy": "~0.7.0",
+    "grunt-contrib-copy": "~0.7.0",
     "grunt-contrib-concat": "~0.5.0",
     "grunt-contrib-jasmine": "^0.8.2",
     "grunt-contrib-less": "~1",
