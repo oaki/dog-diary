@@ -40,6 +40,8 @@
     "ng-file-upload": "~ 5.0.9",
 
     "angular-bootstrap-datetimepicker": "latest",
+    "angular-translate": "latest",
+    "angular-translate-loader-static-files": "latest",
 
 
     "jasmine": "~2.3.4"

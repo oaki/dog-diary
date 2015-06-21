@@ -5,3 +5,5 @@
 - validation inputs
 
 - directive
+
+- translation i18n

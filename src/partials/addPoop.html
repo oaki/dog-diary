@@ -1,10 +1,10 @@
-<h1>Add Poop</h1>
+<h1>{{'Add Poop'|translate}}</h1>
 <form>
     <div class="form-group">
         <div class="dropdown">
             <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
                 <div class="input-append">
-                    Date: {{ datetime | date:'dd.MM.yyyy h:mm' }}
+                    {{'Date'|translate}}: {{ datetime | date:'dd.MM.yyyy h:mm' }}
                 </div>
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -14,12 +14,12 @@
     </div>
 
     <div class="form-group">
-        <label for="consistency">Consistency {{ consistency }}</label>
+        <label for="consistency">{{'Consistency'|translate}} {{ consistency }}</label>
         <input id="consistency" ng-model="consistency" type="range" min="1" max="10" class="bar" class="form-control">
     </div>
 
     <div class="form-group">
-        <label for="size">Size {{size}}</label>
+        <label for="size">{{'Size'|translate}} {{size}}</label>
         <input id="size" ng-model="size" type="range" min="1" max="10" class="bar" class="form-control">
     </div>
 
@@ -28,10 +28,10 @@
     <input type="hidden" ng-model="fileId"/>
 
     <div class="form-group">
-        <a class="btn btn-default" ngf-select ng-model="files">Upload image</a>
+        <a class="btn btn-default" ngf-select ng-model="files">{{'Upload image'|translate}}</a>
     </div>
 
-    <button type="submit" ng-click="insertPoop()" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add</button>
+    <button type="submit" ng-click="insertPoop()" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> {{'Add'|translate}}</button>
 </form>
 
 <img style="max-height: 200px" ngf-src="files[0]" ngf-default-src="images/empty.jpg" ngf-accept="'image/*'">

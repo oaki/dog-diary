@@ -7,7 +7,8 @@ var app = angular.module('DogDiaryApp',
         'geolocation',
         'angular-loading-bar',
         'ngFileUpload',
-        'ui.bootstrap.datetimepicker'
+        'ui.bootstrap.datetimepicker',
+        'pascalprecht.translate'
     ]);
 
 /* use strict */
@@ -18,7 +19,20 @@ app.config(function (uiGmapGoogleMapApiProvider) {
         v: '3.17',
         libraries: 'weather,geometry,visualization'
     });
-});
+})
+
+
+app.config(['$translateProvider', function ($translateProvider) {
+    var translations = {
+        'Add food': 'Add food',
+        'INTRO_TEXT': 'And it has i18n support!'
+    };
+    $translateProvider.translations('en', translations);
+    $translateProvider.preferredLanguage('en');
+    $translateProvider.useSanitizeValueStrategy('escaped');
+
+
+}]);
 
 app.controller("ChartCtrl", function ($scope) {
 

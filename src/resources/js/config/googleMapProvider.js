@@ -6,4 +6,4 @@ app.config(function (uiGmapGoogleMapApiProvider) {
         v: '3.17',
         libraries: 'weather,geometry,visualization'
     });
-});
+})
