@@ -1,5 +1,5 @@
 /* use strict */
-app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
+app.controller('AddFoodCtrl', ['$scope', 'foodDataFactory', '$location', function ($scope, foodDataFactory, $location) {
     $scope.datetime = new Date();
     $scope.weight = 40;
     $scope.dufalact = 5;
@@ -11,8 +11,7 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($
             dufalact: $scope.dufalact
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/food';
-        dataFactory.insert(food)
+        foodDataFactory.insert(food)
             .success(function () {
                 $location.path('/');
             }).

@@ -50,7 +50,7 @@ app.controller('MainCtrl', [
             );
         });
 
-        ctrl.getData = function () {
+        ctrl.createChart = function () {
             $q.all(
                     [
                         poopDataFactory.getAll(),
@@ -69,5 +69,5 @@ app.controller('MainCtrl', [
                 });
         };
 
-        ctrl.getData();
+        ctrl.createChart();
     }]);

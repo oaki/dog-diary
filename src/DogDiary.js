@@ -83,7 +83,7 @@ app.controller("GeoPositionCtrl", function ($scope, uiGmapGoogleMapApi, geolocat
 });
 
 /* use strict */
-app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($scope, dataFactory, $location) {
+app.controller('AddFoodCtrl', ['$scope', 'foodDataFactory', '$location', function ($scope, foodDataFactory, $location) {
     $scope.datetime = new Date();
     $scope.weight = 40;
     $scope.dufalact = 5;
@@ -95,8 +95,7 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($
             dufalact: $scope.dufalact
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/food';
-        dataFactory.insert(food)
+        foodDataFactory.insert(food)
             .success(function () {
                 $location.path('/');
             }).
@@ -108,7 +107,7 @@ app.controller('AddFoodCtrl', ['$scope', 'dataFactory', '$location', function ($
 
 
 /* use strict */
-app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', 'Upload', function ($scope, dataFactory, $location, Upload) {
+app.controller('AddPoopCtrl', ['$scope', 'poopDataFactory', '$location', 'Upload', function ($scope, poopDataFactory, $location, Upload) {
     $scope.datetime = new Date();
     $scope.consistency = 5;
     $scope.size = 5;
@@ -126,9 +125,7 @@ app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', 'Upload', f
             fileId: $scope.fileId
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/poop';
-
-        dataFactory.insert(Poop)
+        poopDataFactory.insert(Poop)
             .success(function () {
                 $location.path('/');
             }).
@@ -216,7 +213,7 @@ app.controller('MainCtrl', [
             );
         });
 
-        ctrl.getData = function () {
+        ctrl.createChart = function () {
             $q.all(
                     [
                         poopDataFactory.getAll(),
@@ -235,7 +232,7 @@ app.controller('MainCtrl', [
                 });
         };
 
-        ctrl.getData();
+        ctrl.createChart();
     }]);
 
 app.directive('dateTimePicker', function() {

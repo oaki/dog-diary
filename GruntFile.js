@@ -13,14 +13,7 @@ module.exports = function (grunt)
         karma: {
             unit: {
                 options: {
-                    frameworks: ['jasmine'],
-                    singleRun: true,
-                    browsers: ['Chrome'],
-                    files: [
-                        'bower_components/angular/angular.js',
-                        'bower_components/angular-mocks/angular-mocks.js',
-                        'src/resources/js/**/*.js'
-                    ]
+                    configFile: 'karma.conf.js'
                 }
             }
         },

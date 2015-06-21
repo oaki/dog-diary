@@ -1,5 +1,5 @@
 /* use strict */
-app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', 'Upload', function ($scope, dataFactory, $location, Upload) {
+app.controller('AddPoopCtrl', ['$scope', 'poopDataFactory', '$location', 'Upload', function ($scope, poopDataFactory, $location, Upload) {
     $scope.datetime = new Date();
     $scope.consistency = 5;
     $scope.size = 5;
@@ -17,9 +17,7 @@ app.controller('AddPoopCtrl', ['$scope', 'dataFactory', '$location', 'Upload', f
             fileId: $scope.fileId
         };
 
-        dataFactory.urlBase = 'http://dogdiary.bincik.sk/server/api/poop';
-
-        dataFactory.insert(Poop)
+        poopDataFactory.insert(Poop)
             .success(function () {
                 $location.path('/');
             }).
