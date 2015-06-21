@@ -6,4 +6,6 @@
 
 - directive
 
+- angular doc
+
 - translation i18n

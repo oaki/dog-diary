@@ -10,12 +10,26 @@ module.exports = function (grunt)
                 ]
             }
         },
+        karma: {
+            unit: {
+                options: {
+                    frameworks: ['jasmine'],
+                    singleRun: true,
+                    browsers: ['PhantomJS'],
+                    files: [
+                        'bower_components/angular/angular.js',
+                        'bower_components/angular-mocks/angular-mocks.js',
+                        'src/resources/js/**/*.js'
+                    ]
+                }
+            }
+        },
 		concat: {
 			options: {
 				separator: "\n\n"
 			},
 			dist: {
-				src: ['src/resources/js/**/*.js'],
+				src: ['src/resources/js/**/*.js', '!src/resources/js/**/*.tests.js'],
 				dest: 'src/<%= pkg.name %>.js'
 			},
 			deps: {
@@ -120,14 +134,19 @@ module.exports = function (grunt)
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-ng-annotate');
+    grunt.loadNpmTasks('grunt-karma');
 
-	//tasks
+    //tasks
 	grunt.registerTask('default', 'Default Task Alias', ['build']);
 
 	grunt.registerTask('build', 'Build the application', 
 		[
             'copy',
             'less:dev',
-		    'concat'
+		    'concat',
 		]);
+
+    grunt.registerTask('test', [
+        'karma'
+    ]);
 }

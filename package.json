@@ -5,16 +5,23 @@
   "main": "index.js",
   "dependencies": {
     "bower": "~1.3.12",
-    "grunt-cli": "~0.1.13"
+    "grunt-cli": "~0.1.13",
+    "karma": "*",
+    "karma-mocha": "*",
+    "karma-jasmine": "*",
+    "karma-phantomjs-launcher": "*"
   },
   "devDependencies": {
-    "grunt-contrib-concat": "~0.5.0",
     "grunt-coib-copy": "~0.7.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-jasmine": "^0.8.2",
     "grunt-contrib-less": "~1",
     "grunt-contrib-uglify": "~0.6.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-karma": "^0.11.1",
     "grunt-ng-annotate": "^0.10.0",
-    "grunt-ngdocs": "~0.2.6"
+    "grunt-ngdocs": "~0.2.6",
+    "karma-chrome-launcher": "^0.1.12"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
