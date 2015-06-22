@@ -1,5 +1,6 @@
     describe('Testing MainCtrl', function() {
-        var scope, $location;
+        var scope;
+        var ctrl;
 
         beforeEach(function() {
             var mockFoodDataFactory = {};
@@ -38,13 +39,14 @@
             });
         });
 
-        beforeEach(inject(function($controller, $rootScope, _$location_, _foodDataFactory_) {
+        beforeEach(inject(function($controller, $rootScope, chartService) {
             scope = $rootScope.$new();
-            $location = _$location_;
-            foodDataFactory = _foodDataFactory_;
 
-            ctrl = $controller('MainCtrl',
-                {$scope: scope, $location: $location, foodDataFactory: foodDataFactory });
+            spyOn(chartService, "getDayRange").and.callFake(function() {
+                return ['2015-06-21', '2015-06-20', '2015-06-19', '2015-06-18', '2015-06-17'];
+            });
+
+            ctrl = $controller('MainCtrl', {$scope: scope});
 
             scope.$digest();
         }));
