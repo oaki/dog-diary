@@ -15,18 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'bower_components/angular/angular.js',
-        'bower_components/angular-translate/angular-translate.js',
-        'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+        'src/DogDiary-deps.js',
         'bower_components/angular-mocks/angular-mocks.js',
-        'bower_components/angular-route/angular-route.js',
-        'bower_components/Chart.js/Chart.min.js',
-        'bower_components/angular-chart.js/dist/angular-chart.js',
-        'bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js',
-        'bower_components/angular-loading-bar/build/loading-bar.js',
-        'bower_components/angular-google-maps/dist/angular-google-maps.js',
-        'bower_components/angular-bootstrap-datetimepicker/src/js/datetimepicker.js',
-        'bower_components/ng-file-upload/ng-file-upload.js',
         'src/resources/js/**/*.js'
     ],
 
